@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %} <!-- New line -->
+
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Rango</title>
+		<link rel="stylesheet" href="{% static "css/tango.css" %}" />
+		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+		<script src=="{% static "js/tango.js" %}"></script>
+	</head>
+	<body>
+		<h1>Rango says...</h1>
+		hello world! <strong>{{ boldmessage }}</strong><br />
+		
+		{% if categories %}
+			<ul>
+				{% for category in categories %}
+				<li>
+					<a href="/rango/category/{{ category.hashedname }}">{{ category.name }}</a> 
+				</li>
+				{% endfor %}		
+			</ul>
+		{% else %}
+			<strong>There are no categories present.</strong>
+		{% endif %}
+		<a href="/rango/add_category/">Add a New Category</a>
+		<br />
+		<a href="/rango/about/">About</a>
+		<br />
+		<a href="{% url 'registration_register' %}">Account Registration</a>
+		<br />
+		<img src="{% static "images/logo.jpg" %}" alt="Picture of Rango" />
+	</body>
+</html>
